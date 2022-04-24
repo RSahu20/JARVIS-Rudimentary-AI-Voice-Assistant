@@ -1,3 +1,6 @@
+
+# import all required libraries for different type of tasks 
+
 import pyttsx3
 import wikipedia
 import speech_recognition as sr
@@ -21,21 +24,28 @@ import random
 from sys import platform
 import getpass
 
+# speak function
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
 
-# print(voices[0].id)
+
+
+
+# define various task functions
 
 
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
+
 def open_camera():
     sp.run('start microsoft.windows.camera:', shell=True)
+
 def send_whatsapp_message(number, message):
     kit.sendwhatmsg_instantly(f"+91{number}", message)
+
 def screenshot():
     img = pyautogui.screenshot()
     img.save(r"C:\Users\rajsa\Pictures\Saved Pictures.png")
@@ -114,6 +124,7 @@ def cpu():
     speak("battery is at")	
     speak(battery.percent)
 
+    
 if __name__ == '__main__':
 
     if platform == "linux" or platform == "linux2":
@@ -133,9 +144,11 @@ if __name__ == '__main__':
   
 wishMe()
 
+# Loop for various tasks
+
 while True:
         query = takeCommand().lower()
-        if 'wikipedia' in query:
+        if 'wikipedia' in query:     
             speak('Searching Wikipedia....')
             query = query.replace('wikipedia', '')
             results = wikipedia.summary(query, sentences=1)
